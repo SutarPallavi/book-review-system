@@ -1,0 +1,6 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://admin:admin@atlascluster.sa2u6yy.mongodb.net/?retryWrites=true&w=majority
+      database: Books
+        
