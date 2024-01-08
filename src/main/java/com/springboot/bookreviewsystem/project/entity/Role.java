@@ -14,20 +14,19 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Data
-@Document(collection = "users")
+@Document(collection = "roles")
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Getter
 @Setter
-public class User {
+public class Role {
 
-	public static final String SEQUENCE_NAME = "users";
-	@Id()
+	public static final String SEQUENCE_ROLE_NAME = "roles";
+	
+	@Id
 	@Field("_id")
 	private long id;
 	private String name;
-	private String email;
-	private String password;
-	private List<Role> roles;
+	private List<User> users;
 }

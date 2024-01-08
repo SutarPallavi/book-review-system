@@ -2,20 +2,23 @@ package com.springboot.bookreviewsystem.project.dto;
 
 import java.util.List;
 
-import com.springboot.bookreviewsystem.project.entity.Book;
-import com.springboot.bookreviewsystem.project.entity.UserAndReviews;
+import com.springboot.bookreviewsystem.project.entity.User;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class BooksAndReviewsDto {
+@Getter
+@Setter
+public class RoleDto {
 
-	private Book  book;
-	private List<UserAndReviewDto> userAndReviewDtos;
+	private String name;
+	private List<User> users;
 }

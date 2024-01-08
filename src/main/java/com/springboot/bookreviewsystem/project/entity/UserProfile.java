@@ -2,10 +2,6 @@ package com.springboot.bookreviewsystem.project.entity;
 
 import java.util.List;
 
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Transient;
-import javax.persistence.UniqueConstraint;
-
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;

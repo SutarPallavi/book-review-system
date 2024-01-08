@@ -1,6 +1,9 @@
 spring:
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    enabled: true
   data:
     mongodb:
       uri: mongodb+srv://admin:admin@atlascluster.sa2u6yy.mongodb.net/?retryWrites=true&w=majority
       database: Books
-        

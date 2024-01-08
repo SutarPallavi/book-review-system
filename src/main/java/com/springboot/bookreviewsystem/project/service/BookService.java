@@ -11,9 +11,9 @@ import com.springboot.bookreviewsystem.project.dto.BookDto;
 import com.springboot.bookreviewsystem.project.dto.BooksAndReviewsDto;
 import com.springboot.bookreviewsystem.project.dto.UserAndReviewDto;
 import com.springboot.bookreviewsystem.project.entity.Book;
-import com.springboot.bookreviewsystem.project.entity.User;
+import com.springboot.bookreviewsystem.project.entity.UserAndReviews;
 import com.springboot.bookreviewsystem.project.repo.BookRepository;
-import com.springboot.bookreviewsystem.project.repo.UserRepositor;
+import com.springboot.bookreviewsystem.project.repo.UserAndReviewsRepositor;
 import com.springboot.bookreviewsystem.project.utils.AppUtilts;
 
 @Service
@@ -23,7 +23,7 @@ public class BookService {
 	private BookRepository bookRepository;
 	
 	@Autowired
-	private UserRepositor userRepositor;
+	private UserAndReviewsRepositor userRepositor;
 	
 	public Book saveBook(BookDto bookDto) {
 	
@@ -42,16 +42,16 @@ public class BookService {
 	public List<BooksAndReviewsDto> getAllBooksAndReviews (){
 		List<Book> booksList = bookRepository.findAll();
 		
-		List<User> userList = userRepositor.findAll();
+		List<UserAndReviews> userList = userRepositor.findAll();
 		
 		List<BooksAndReviewsDto> booksAndReviewsList = new ArrayList<>();
 		for(Book book : booksList) {
-			List<User> usersBookReview = userList.stream()
+			List<UserAndReviews> usersBookReview = userList.stream()
 					.filter(user -> 
 					user.getBookReviews().stream().anyMatch( books -> books.getName().equals(book.getName()))).collect(Collectors.toList());
 			List<UserAndReviewDto> userAndReviewDtos = new ArrayList<>();
 			
-			for(User user : usersBookReview) {
+			for(UserAndReviews user : usersBookReview) {
 				userAndReviewDtos.add(UserAndReviewDto.builder()
 						.userName(user.getName())
 						.bookReviews(user.getBookReviews().stream().filter(b -> b.getName().equals(book.getName())).findFirst()).build());

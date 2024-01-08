@@ -4,21 +4,26 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import com.springboot.bookreviewsystem.project.dto.BookDto;
+import com.springboot.bookreviewsystem.project.dto.UserAndReviewsDto;
 import com.springboot.bookreviewsystem.project.dto.UserDto;
 import com.springboot.bookreviewsystem.project.dto.UserProfileDto;
 import com.springboot.bookreviewsystem.project.entity.Book;
 import com.springboot.bookreviewsystem.project.entity.SequenceGenerator;
 import com.springboot.bookreviewsystem.project.entity.User;
+import com.springboot.bookreviewsystem.project.entity.UserAndReviews;
 import com.springboot.bookreviewsystem.project.entity.UserProfile;
 
 @Component
 public class AppUtilts {
 
 	@Autowired
-	private SequenceGenerator sequenseGenerator; 
+	private SequenceGenerator sequenseGenerator;
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 	
 	public static Book dtoToDocument(BookDto bookDto) {
 		Book book = new Book();
@@ -33,14 +38,14 @@ public class AppUtilts {
 	}
 	
 	
-	public static User dtoToDocument(UserDto userDto) {		
-		User user = User.builder().name(userDto.getName()).bookReviews(userDto.getBookReviews().stream().collect(Collectors.toList())).build();
+	public static UserAndReviews dtoToDocument(UserAndReviewsDto userDto) {		
+		UserAndReviews user = UserAndReviews.builder().name(userDto.getName()).bookReviews(userDto.getBookReviews().stream().collect(Collectors.toList())).build();
 		//BeanUtils.copyProperties(userDto, user);
 		return user;
 	}
 	
-	public static UserDto documentToDto(User user) {
-		UserDto userDto = UserDto.builder()
+	public static UserAndReviewsDto documentToDto(UserAndReviews user) {
+		UserAndReviewsDto userDto = UserAndReviewsDto.builder()
 				.name(user.getName())
 				.bookReviews(user.getBookReviews())
 				.build();
@@ -69,5 +74,27 @@ public class AppUtilts {
 				.favoriteBookNames(userProfile.getFavoriteBookNames())
 				.build();
 		return userProfileDto;
+	}
+	
+	public User dtoToDocument(UserDto userDto) {
+		User user = User.builder()
+				.name(userDto.getFirstName() + " "+ userDto.getLastName())
+				.email(userDto.getEmail())
+				.password(passwordEncoder.encode(userDto.getPassword()))
+				.build();
+		user.setId(sequenseGenerator.getNextSequenceId(User.SEQUENCE_NAME));
+		return user;
+	}
+	
+	public static UserDto documentToDto(User user) {
+		String[] name = user.getName().split(" ");
+		
+		UserDto userDto = UserDto.builder()
+				.firstName(name[0])
+				.lastName(name[1])
+				.email(user.getEmail())
+				.password(user.getPassword())
+				.build();
+		return userDto;
 	}
 }

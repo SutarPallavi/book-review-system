@@ -1,39 +1,22 @@
 package com.springboot.bookreviewsystem.project.dto;
 
-import java.util.List;
-
-import org.springframework.data.mongodb.core.mapping.Document;
-
-import com.springboot.bookreviewsystem.project.entity.BookReview;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Data
-@Document(collection = "users")
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder(toBuilder = true)
+@Builder
+@Getter
+@Setter
 public class UserDto {
-	private String name;
-	private List<BookReview> bookReviews;
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public List<BookReview> getBookReviews() {
-		return bookReviews;
-	}
-	public void setBookReviews(List<BookReview> bookReviews) {
-		this.bookReviews = bookReviews;
-	}
-	@Override
-	public String toString() {
-		return "User [name=" + name + ", bookReviews=" + bookReviews + "]";
-	}
 
+	private String firstName;
+    private String lastName;
+    private String email;
+	private String password;
 }
