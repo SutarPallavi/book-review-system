@@ -38,7 +38,7 @@ public class UserService {
 		if(role == null) {
 			role = checkRoleExist();
 		}		
-		 user.setRoles(Arrays.asList());
+		 user.setRoles(Arrays.asList(role));
 		 
 		 UserProfileDto userProfileDto = UserProfileDto.builder()
 					.firstName(userDto.getFirstName())
