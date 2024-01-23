@@ -9,12 +9,17 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
+import com.springboot.bookreviewsystem.project.dto.BookDto;
 import com.springboot.bookreviewsystem.project.dto.UserDto;
+import com.springboot.bookreviewsystem.project.dto.UserProfileDto;
 import com.springboot.bookreviewsystem.project.entity.User;
+import com.springboot.bookreviewsystem.project.service.BookService;
+import com.springboot.bookreviewsystem.project.service.UserProfileService;
 import com.springboot.bookreviewsystem.project.service.UserService;
 
 import jakarta.validation.Valid;
@@ -25,6 +30,10 @@ public class AuthController {
 
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private BookService bookService;
+	@Autowired
+	private UserProfileService userProfileService;
 	
 	 // handler method to handle home page request
     @GetMapping("/index")
@@ -74,5 +83,30 @@ public class AuthController {
     @GetMapping("/login")
     public String login(){
         return "login";
+    }
+    
+    @GetMapping("/homepage")
+    public String homepage(Model model) {
+    	List<BookDto> bookDtos = bookService.getAllBooks();
+    	model.addAttribute("bookDtos", bookDtos);
+    	return "homepage";
+    }
+    
+    @GetMapping("/updateuserprofile")
+    public String updateuserprofile(Model model) {
+    	// create model object to store form data
+        UserProfileDto userProfile = new UserProfileDto();
+        model.addAttribute("userProfile", userProfile);
+        return "updateuserprofile";
+    }
+    
+    //handler method for user profile
+    @PostMapping("/updateuserprofile/save")
+    public String saveuserprofile(@Valid @ModelAttribute("userprofile") UserProfileDto userprofile,
+            BindingResult result,
+            Model model){
+    	userProfileService.saveNewUserProfile(userprofile);
+				return "redirect:/updateuserprofile?success";
+    	
     }
 }

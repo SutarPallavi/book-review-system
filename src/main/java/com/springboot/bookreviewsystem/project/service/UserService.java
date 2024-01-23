@@ -39,13 +39,6 @@ public class UserService {
 			role = checkRoleExist();
 		}		
 		 user.setRoles(Arrays.asList(role));
-		 
-		 UserProfileDto userProfileDto = UserProfileDto.builder()
-					.firstName(userDto.getFirstName())
-					.lastName(userDto.getLastName())
-					.emailId(userDto.getEmail())
-					.build();
-		 userProfileService.saveNewUserProfile(userProfileDto);
 		return userRepository.save(user);
 	}
 	

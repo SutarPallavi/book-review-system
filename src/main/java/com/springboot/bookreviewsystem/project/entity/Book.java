@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 public class Book {
 
 	private String name;
-	private String authore;
+	private String author;
 	private double price;
 	
 	public String getName() {
@@ -25,10 +25,10 @@ public class Book {
 		this.name = name;
 	}
 	public String getAuthore() {
-		return authore;
+		return author;
 	}
 	public void setAuthore(String authore) {
-		this.authore = authore;
+		this.author = authore;
 	}
 	public double getPrice() {
 		return price;
@@ -39,6 +39,6 @@ public class Book {
 	
 	@Override
 	public String toString() {
-		return "Book [ name=" + name + ", authore=" + authore + ", price=" + price + "]";
+		return "Book [ name=" + name + ", authore=" + author + ", price=" + price + "]";
 	}
 }

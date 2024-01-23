@@ -34,18 +34,25 @@
         <thead class="table-dark">
             <tr>
                 <th>Name</th>
-                <th>Auther</th>
+                <th>Author</th>
                 <th>Price</th>
             </tr>
         </thead>
         <tbody>
-            <tr th:each = "book : ${booksDtoList}">
+            <tr th:each = "book : ${bookDtos}">
                 <td th:text = "${book.name}"></td>
-                <td th:text = "${book.auther}"></td>
+                <td th:text = "${book.author}"></td>
                 <td th:text = "${book.price}"></td>
             </tr>
         </tbody>
     </table>
 </div>
+
+ <div class="row col-md-10 mt-4">
+        <!-- Add the "Update User Profile" button here -->
+        <form th:action="@{/updateuserprofile}" method="get">
+            <button type="submit" class="btn btn-primary">Update User Profile</button>
+        </form>
+    </div>
 </body>
 </html>
