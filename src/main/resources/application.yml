@@ -1,6 +1,11 @@
 spring:
   data:
     mongodb:
+<<<<<<< Updated upstream
       uri: mongodb+srv://admin:admin@atlascluster.sa2u6yy.mongodb.net/?retryWrites=true&w=majority
       database: Books
         
+=======
+      uri: mongodb+srv://admin:admin@mongodbtestcluster.ucaqxvk.mongodb.net/?retryWrites=true&w=majority&appName=MongoDbTestCluster
+      database: Books
+>>>>>>> Stashed changes
