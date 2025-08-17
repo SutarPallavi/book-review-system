@@ -11,7 +11,7 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
-import com.springboot.bookreviewsystem.project.enums.BookGeners;
+import com.springboot.bookreviewsystem.project.enums.BookGenres;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -34,7 +34,8 @@ public class UserProfile {
 	private String firstName;
 	private String lastName;
 	private String emailId;
-	private List<BookGeners> favoriteBookGeners;
+	private String passwordHash;
+	private List<BookGenres> favoriteBookGenres;
 	private List<String> favoriteBookNames;
 	public static String getSequenceName() {
 		return SEQUENCE_NAME;

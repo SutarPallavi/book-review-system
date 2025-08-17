@@ -48,17 +48,83 @@ a {
   background: transparent;
   border-radius: 6px;
   cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
+}
+.form_container .button {
+  background: #7d2ae8;
+  border-color: #7d2ae8;
+  color: #fff;
+  width: 100%;
+  text-align: center;
+}
+.form_container .button:hover {
+  filter: brightness(1.08);
 }
 .button:active {
   transform: scale(0.98);
+}
+/* Hero content */
+.hero-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 120px 20px 40px 20px;
+  color: #fff;
+  z-index: 1;
+  position: relative;
+}
+
+.hero-text {
+  flex: 1;
+  max-width: 500px;
+}
+
+.hero-text h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.hero-text p {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  color: #f0f0f0;
+  line-height: 1.6;
+}
+
+.hero-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-image svg {
+  max-width: 350px;
+  height: auto;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+}
+
+/* Improve header button visibility */
+.header .button {
+  background: #7d2ae8;
+  border-color: #7d2ae8;
+}
+.header .button:hover {
+  filter: brightness(1.08);
 }
 
 /* Home */
 .home {
   position: relative;
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
-  background-image: url("bg.jpg");
+  /* Fallback background so white text is visible even if image is missing */
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   background-size: cover;
   background-position: center;
 }

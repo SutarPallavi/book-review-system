@@ -41,4 +41,10 @@ public class BookController {
 		List<BooksAndReviewsDto> booksAndReviewsDtosList = bookService.getAllBooksAndReviews();
 		return ResponseEntity.ok().body(booksAndReviewsDtosList);
 	}
+	
+	@GetMapping("/books/getBooksByGenre")
+	public ResponseEntity<List<BookDto>> getBooksByGenre(@org.springframework.web.bind.annotation.RequestParam String genre){
+		List<BookDto> booksList = bookService.getBooksByGenre(genre);
+		return ResponseEntity.ok().body(booksList);
+	}
 }

@@ -61,4 +61,13 @@ public class BookService {
 		
 		return booksAndReviewsList;
 	}
+	
+	public List<BookDto> getBooksByGenre(String genre){
+		List<Book> booksList = bookRepository.findByGenre(genre);
+		List<BookDto> booksDtoList = new ArrayList<>();		
+		for(Book book : booksList){
+			booksDtoList.add(AppUtilts.documentToDto(book));
+		}
+		return booksDtoList;
+	}
 }

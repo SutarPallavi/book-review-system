@@ -1,6 +1,7 @@
 package com.springboot.bookreviewsystem.project.controller;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,8 +30,19 @@ public class UserProfileController {
 	}
 	
 	@GetMapping("/book-revie-system/userprofile/getuser/{userId}")
-	public UserProfileDto getUserProfile(@PathVariable String userId){
-		UserProfileDto userProfileDto = userProfileService.getUserProfile(userId);		
+	public UserProfileDto getUserProfile(@PathVariable Long userId){
+		UserProfileDto userProfileDto = userProfileService.getUserProfile(userId);
 		return userProfileDto;
+	}
+	
+	@GetMapping("/userprofiles/getalluserprofiles")
+	public ResponseEntity<?> getAllUserProfiles(){
+		try {
+			List<UserProfile> allProfiles = userProfileService.getAllUserProfiles();
+			return ResponseEntity.ok(allProfiles);
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+				.body("Error retrieving user profiles: " + e.getMessage());
+		}
 	}
 }

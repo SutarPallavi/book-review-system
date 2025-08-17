@@ -1,5 +1,6 @@
 package com.springboot.bookreviewsystem.project.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,12 +25,16 @@ public class UserProfileService {
 		return userProfile;
 	}
 	
-	public UserProfileDto getUserProfile(String id) {
+	public UserProfileDto getUserProfile(Long id) {
 		Optional<UserProfile> userProfile= userProfileRepository.findById(id);
 		if(userProfile.isPresent()) {
 			return AppUtilts.documentToDto(userProfile.get());
 		}
 		else 
 			return null; 
+	}
+	
+	public List<UserProfile> getAllUserProfiles() {
+		return userProfileRepository.findAll();
 	}
 }

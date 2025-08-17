@@ -1,6 +1,6 @@
 package com.springboot.bookreviewsystem.project.enums;
 
-public enum BookGeners {
+public enum BookGenres {
 
 	FICTION ("fiction"),
 	MYSTERY("Mystery"),
@@ -8,7 +8,7 @@ public enum BookGeners {
 
 	public final String label;
 	
-	BookGeners(String string) {
+	BookGenres(String string) {
 		this.label = string;
 	}
 }

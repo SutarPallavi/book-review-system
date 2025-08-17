@@ -8,6 +8,11 @@ public class WebsiteController {
 
 	@GetMapping("/get/bookreviewsystem/index.html")
 	public String getIndex() {
-		return "index"; 
+		return "forward:/index.html";
+	}
+
+	@GetMapping("/register")
+	public String getRegister() {
+		return "forward:/register.html";
 	}
 }

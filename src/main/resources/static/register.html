@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ctrl+Book — your shortcut to reviews</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <style>
+      .container { max-width: 640px; margin: 100px auto; background: #fff; padding: 24px; border-radius: 12px; }
+      .row { display: flex; gap: 16px; }
+      .row > div { flex: 1; }
+      label { display:block; margin: 12px 0 6px; color: #0b0217; }
+      input, select, textarea { width: 100%; padding: 10px 12px; border: 1px solid #ccc; border-radius: 8px; }
+      .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+      .chip { background: #eee; padding: 6px 10px; border-radius: 16px; }
+      .btn { margin-top: 16px; background: #7d2ae8; color: #fff; border: none; border-radius: 8px; padding: 10px 16px; cursor: pointer; }
+      .note { color:#333; font-size: 12px; margin-top: 6px; }
+      .error { color: #b00020; margin-top: 10px; }
+      .success { color: #1b5e20; margin-top: 10px; }
+    </style>
+  </head>
+  <body>
+    <section class="home" style="background-image:none;background-color:#f5f7fb;">
+      <div class="container">
+        <h2>Register</h2>
+        <form id="registerForm">
+          <div class="row">
+            <div>
+              <label for="firstName">First Name</label>
+              <input id="firstName" name="firstName" required />
+            </div>
+            <div>
+              <label for="lastName">Last Name</label>
+              <input id="lastName" name="lastName" required />
+            </div>
+          </div>
+          <label for="userName">Username</label>
+          <input id="userName" name="userName" required />
+          <label for="emailId">Email</label>
+          <input id="emailId" name="emailId" type="email" required />
+          <label for="password">Create password</label>
+          <input id="password" name="password" type="password" minlength="6" placeholder="At least 6 characters" required />
+          		<label for="favoriteBookGenres">Favorite Genres</label>
+		<select id="favoriteBookGenres" multiple size="3">
+            <option value="FICTION">Fiction</option>
+            <option value="MYSTERY">Mystery</option>
+            <option value="HISTORICALFICTION">Historical Fiction</option>
+          </select>
+          <div class="note">Hold Ctrl (Cmd on Mac) to select multiple</div>
+          <label for="favoriteBookNames">Favorite Books (comma-separated)</label>
+          <input id="favoriteBookNames" placeholder="e.g., The Hobbit, 1984" />
+          <button class="btn" type="submit">Create Account</button>
+          <div id="message"></div>
+        </form>
+      </div>
+    </section>
+    <script>
+      const form = document.getElementById('registerForm');
+      const message = document.getElementById('message');
+      function getSelectedValues(selectEl){
+        return Array.from(selectEl.options).filter(o=>o.selected).map(o=>o.value);
+      }
+      form.addEventListener('submit', async (e)=>{
+        e.preventDefault();
+        message.textContent = '';
+        const payload = {
+          userName: document.getElementById('userName').value.trim(),
+          firstName: document.getElementById('firstName').value.trim(),
+          lastName: document.getElementById('lastName').value.trim(),
+          emailId: document.getElementById('emailId').value.trim(),
+          password: document.getElementById('password').value,
+          			favoriteBookGenres: getSelectedValues(document.getElementById('favoriteBookGenres')),
+          favoriteBookNames: document.getElementById('favoriteBookNames').value.split(',').map(s=>s.trim()).filter(Boolean)
+        };
+        try{
+          const res = await fetch('/book-review-system/userprofiles/newuser', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          if(res.ok){
+            // Redirect to login with a success flash message
+            window.location.href = '/index.html?flash=registered';
+          } else {
+            const text = await res.text();
+            message.className = 'error';
+            message.textContent = `Failed: ${res.status} ${text}`;
+          }
+        }catch(err){
+          message.className = 'error';
+          message.textContent = 'Network error. Ensure backend is running and MongoDB is reachable.';
+        }
+      });
+    </script>
+  </body>
+  </html>
+
+

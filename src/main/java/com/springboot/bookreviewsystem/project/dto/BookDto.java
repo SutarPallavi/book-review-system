@@ -13,7 +13,7 @@ public class BookDto {
 
 	private String name;
 	private String authore;
-	private double price;
+	private String genre;
 	
 	public String getName() {
 		return name;
@@ -27,15 +27,15 @@ public class BookDto {
 	public void setAuthore(String authore) {
 		this.authore = authore;
 	}
-	public double getPrice() {
-		return price;
+	public String getGenre() {
+		return genre;
 	}
-	public void setPrice(double price) {
-		this.price = price;
+	public void setGenre(String genre) {
+		this.genre = genre;
 	}
 	
 	@Override
 	public String toString() {
-		return "Book [name=" + name + ", authore=" + authore + ", price=" + price + "]";
+		return "Book [name=" + name + ", genre=" + genre + ", authore=" + authore + "]";
 	}
 }

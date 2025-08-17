@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - codingnepalweb.com -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ctrl+Book — your shortcut to reviews</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <!-- Unicons -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <nav class="nav">
+        <a href="#" class="nav_logo">Ctrl+Book</a>
+
+        <button class="button" id="form-open">Login</button>
+        <a href="/contact.html" class="nav_link" style="margin-left: 16px; color: #0b0217; text-decoration: none;">Contact</a>
+      </nav>
+    </header>
+
+    <!-- Home -->
+    <section class="home">
+      <!-- Hero content with image and text -->
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>Welcome to Ctrl+Book</h1>
+          <p>Your shortcut to honest book reviews and ratings</p>
+          <p>Discover, rate, and share your thoughts on the books you love</p>
+        </div>
+        <div class="hero-image">
+          <svg width="300" height="200" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+            <!-- Book Stack - Bottom Book -->
+            <rect x="50" y="120" width="120" height="80" rx="5" fill="#4A90E2" stroke="#2E5C8A" stroke-width="2"/>
+            <rect x="55" y="125" width="110" height="70" fill="#FFFFFF" stroke="#E0E0E0" stroke-width="1"/>
+            
+            <!-- Book Stack - Middle Book -->
+            <rect x="45" y="100" width="120" height="80" rx="5" fill="#FF6B6B" stroke="#DC143C" stroke-width="2"/>
+            <rect x="50" y="105" width="110" height="70" fill="#FFFFFF" stroke="#E0E0E0" stroke-width="1"/>
+            
+            <!-- Book Stack - Top Book -->
+            <rect x="40" y="80" width="120" height="80" rx="5" fill="#4ECDC4" stroke="#20B2AA" stroke-width="2"/>
+            <rect x="45" y="85" width="110" height="70" fill="#FFFFFF" stroke="#E0E0E0" stroke-width="1"/>
+            
+            <!-- Book pages for top book -->
+            <line x1="50" y1="95" x2="90" y2="95" stroke="#D0D0D0" stroke-width="1"/>
+            <line x1="50" y1="105" x2="85" y2="105" stroke="#D0D0D0" stroke-width="1"/>
+            <line x1="50" y1="115" x2="80" y2="115" stroke="#D0D0D0" stroke-width="1"/>
+            <line x1="50" y1="125" x2="75" y2="125" stroke="#D0D0D0" stroke-width="1"/>
+            <line x1="50" y1="135" x2="70" y2="135" stroke="#D0D0D0" stroke-width="1"/>
+            <line x1="50" y1="145" x2="65" y2="145" stroke="#D0D0D0" stroke-width="1"/>
+            
+            <!-- Book pages for middle book -->
+            <line x1="55" y1="115" x2="95" y2="115" stroke="#D0D0D0" stroke-width="1"/>
+            <line x1="55" y1="125" x2="90" y2="125" stroke="#D0D0D0" stroke-width="1"/>
+            <line x1="55" y1="135" x2="85" y2="135" stroke="#D0D0D0" stroke-width="1"/>
+            <line x1="55" y1="145" x2="80" y2="145" stroke="#D0D0D0" stroke-width="1"/>
+            <line x1="55" y1="155" x2="75" y2="155" stroke="#D0D0D0" stroke-width="1"/>
+            <line x1="55" y1="165" x2="70" y2="165" stroke="#D0D0D0" stroke-width="1"/>
+            
+            <!-- Book pages for bottom book -->
+            <line x1="60" y1="135" x2="100" y2="135" stroke="#D0D0D0" stroke-width="1"/>
+            <line x1="60" y1="145" x2="95" y2="145" stroke="#D0D0D0" stroke-width="1"/>
+            <line x1="60" y1="155" x2="90" y2="155" stroke="#D0D0D0" stroke-width="1"/>
+            <line x1="60" y1="165" x2="85" y2="165" stroke="#D0D0D0" stroke-width="1"/>
+            <line x1="60" y1="175" x2="80" y2="175" stroke="#D0D0D0" stroke-width="1"/>
+            <line x1="60" y1="185" x2="75" y2="185" stroke="#D0D0D0" stroke-width="1"/>
+            
+            <!-- Star rating -->
+            <g transform="translate(200, 100)">
+              <!-- 5 stars -->
+              <polygon points="0,0 2,6 8,6 3,10 5,16 0,12 -5,16 -3,10 -8,6 -2,6" fill="#FFD700" stroke="#FFA500" stroke-width="0.5"/>
+              <polygon points="15,0 17,6 23,6 18,10 20,16 15,12 10,16 12,10 7,6 13,6" fill="#FFD700" stroke="#FFA500" stroke-width="0.5"/>
+              <polygon points="30,0 32,6 38,6 33,10 35,16 30,12 25,16 27,10 22,6 28,6" fill="#FFD700" stroke="#FFA500" stroke-width="0.5"/>
+              <polygon points="45,0 47,6 53,6 48,10 50,16 45,12 40,16 42,10 37,6 43,6" fill="#FFD700" stroke="#FFA500" stroke-width="0.5"/>
+              <polygon points="60,0 62,6 68,6 63,10 65,16 60,12 55,16 57,10 52,6 58,6" fill="#FFD700" stroke="#FFA500" stroke-width="0.5"/>
+            </g>
+            
+            <!-- Review text -->
+            <text x="200" y="140" font-family="Arial, sans-serif" font-size="12" fill="#333333">Book Reviews</text>
+            <text x="200" y="155" font-family="Arial, sans-serif" font-size="10" fill="#666666">Rate & Share</text>
+            
+            <!-- Decorative elements -->
+            <circle cx="80" cy="60" r="8" fill="#FF6B6B" opacity="0.7"/>
+            <circle cx="220" cy="70" r="6" fill="#4ECDC4" opacity="0.7"/>
+            <circle cx="70" cy="180" r="5" fill="#45B7D1" opacity="0.7"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="form_container">
+        <i class="uil uil-times form_close"></i>
+        <!-- Login From -->
+        <div class="form login_form">
+          <form id="loginForm" action="javascript:void(0)">
+            <h2>Login</h2>
+
+            <div class="input_box">
+              <input type="email" placeholder="Enter your email" required />
+              <i class="uil uil-envelope-alt email"></i>
+            </div>
+            <div class="input_box">
+              <input type="password" placeholder="Enter your password" required />
+              <i class="uil uil-lock password"></i>
+              <i class="uil uil-eye-slash pw_hide"></i>
+            </div>
+
+            <div class="option_field">
+              <span class="checkbox">
+                <input type="checkbox" id="check" />
+                <label for="check">Remember me</label>
+              </span>
+              <a href="#" class="forgot_pw">Forgot password?</a>
+            </div>
+
+            <a class="button" id="login-submit" href="/books.html">Login Now</a>
+            <div id="loginMessage" class="muted" style="margin-top:10px;color:#b00020;"></div>
+
+            <div class="login_signup">Don't have an account? <a href="/register">Register</a></div>
+          </form>
+        </div>
+
+        <!-- Signup From -->
+        <div class="form signup_form">
+          <form action="#">
+            <h2>Signup</h2>
+
+            <div class="input_box">
+              <input type="email" placeholder="Enter your email" required />
+              <i class="uil uil-envelope-alt email"></i>
+            </div>
+            <div class="input_box">
+              <input type="password" placeholder="Create password" required />
+              <i class="uil uil-lock password"></i>
+              <i class="uil uil-eye-slash pw_hide"></i>
+            </div>
+            <div class="input_box">
+              <input type="password" placeholder="Confirm password" required />
+              <i class="uil uil-lock password"></i>
+              <i class="uil uil-eye-slash pw_hide"></i>
+            </div>
+
+            <button class="button">Signup Now</button>
+
+            <div class="login_signup">Already have an account? <a href="#" id="login">Login</a></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <script src="/script.js?v=3"></script>
+    <script>
+      // Flash message handler (e.g., after registration)
+      (function(){
+        const params = new URLSearchParams(location.search);
+        const flash = params.get('flash');
+        if(flash === 'registered'){
+          alert('Registration successful. Please log in.');
+          // Open login modal
+          try {
+            var homeEl = document.querySelector('.home');
+            if(homeEl){ homeEl.classList.add('show'); }
+            var formEl = document.querySelector('.form_container');
+            if(formEl){ formEl.classList.remove('active'); }
+          } catch(e) {}
+          // clean the query string so alert is not shown again on refresh
+          const url = new URL(location.href);
+          url.searchParams.delete('flash');
+          window.history.replaceState({}, '', url);
+        }
+      })();
+    </script>
+  </body>
+  </html>
+
+

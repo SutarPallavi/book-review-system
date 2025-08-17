@@ -29,8 +29,26 @@ public class UserService {
 		String name = userDto.getName();
 		User user = repositor.findByName(name);
 		if(user != null) {
-			List<BookReview> bSList = userDto.getBookReviews();
-			user.getBookReviews().addAll(bSList);
+			List<BookReview> incomingReviews = userDto.getBookReviews();
+			if (incomingReviews != null) {
+				if (user.getBookReviews() == null) {
+					user.setBookReviews(new ArrayList<>());
+				}
+				for (BookReview incoming : incomingReviews) {
+					boolean updated = false;
+					for (int i = 0; i < user.getBookReviews().size(); i++) {
+						BookReview existing = user.getBookReviews().get(i);
+						if (existing != null && existing.getName() != null && existing.getName().equals(incoming.getName())) {
+							user.getBookReviews().set(i, incoming);
+							updated = true;
+							break;
+						}
+					}
+					if (!updated) {
+						user.getBookReviews().add(incoming);
+					}
+				}
+			}
 			updateUser(user);
 			return user;
 		} else 

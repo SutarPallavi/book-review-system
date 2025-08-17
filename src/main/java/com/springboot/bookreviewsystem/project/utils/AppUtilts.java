@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.springboot.bookreviewsystem.project.dto.BookDto;
 import com.springboot.bookreviewsystem.project.dto.UserDto;
@@ -48,12 +49,14 @@ public class AppUtilts {
 	}
 	
 	public UserProfile dtoToDocument(UserProfileDto userProfileDto) {
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		UserProfile userProfile = UserProfile.builder()
 				.userName(userProfileDto.getUserName())
 				.firstName(userProfileDto.getFirstName())
 				.lastName(userProfileDto.getLastName())
 				.emailId(userProfileDto.getEmailId())
-				.favoriteBookGeners(userProfileDto.getFavoriteBookGeners())
+				.passwordHash(userProfileDto.getPassword() != null ? encoder.encode(userProfileDto.getPassword()) : null)
+				.favoriteBookGenres(userProfileDto.getFavoriteBookGenres())
 				.favoriteBookNames(userProfileDto.getFavoriteBookNames())
 				.build();
 		userProfile.setUserID(sequenseGenerator.getNextSequenceId(UserProfile.SEQUENCE_NAME));
@@ -65,7 +68,7 @@ public class AppUtilts {
 				.firstName(userProfile.getFirstName())
 				.lastName(userProfile.getLastName())
 				.emailId(userProfile.getEmailId())
-				.favoriteBookGeners(userProfile.getFavoriteBookGeners())
+				.favoriteBookGenres(userProfile.getFavoriteBookGenres())
 				.favoriteBookNames(userProfile.getFavoriteBookNames())
 				.build();
 		return userProfileDto;
